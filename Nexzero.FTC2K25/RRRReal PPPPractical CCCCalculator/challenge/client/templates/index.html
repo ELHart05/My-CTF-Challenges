@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            background-image: url('https://estin.dz/wp-content/uploads/2024/10/nexus-image-1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #59c550;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            padding: 12px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, button:focus {
+            outline: none;
+            border-color: #59c550;
+            box-shadow: 0 0 5px rgba(52, 219, 116, 0.5);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #59c550;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4da245;
+        }
+
+        #b-container {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.25rem;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            input, select, button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+        .crts {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nexus Calculator</h1>
+        
+        <!-- Calculator Section -->
+        <input type="number" id="a" placeholder="First number">
+        <select id="op" onchange="updateInputs()">
+            <option value="add">add</option>
+            <option value="sub">sub</option>
+            <option value="mul">mul</option>
+            <option value="div">div</option>
+            <option value="mod">mod</option>
+            <option value="pow">pow</option>
+            <option value="max">max</option>
+            <option value="min">min</option>
+            <option value="avg">avg</option>
+            <option value="mul2">mul2</option>
+            <option value="div2">div2</option>
+            <option value="inc">inc</option>
+            <option value="dec">dec</option>
+            <option value="abs">abs</option>
+            <option value="sqrt">sqrt</option>
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+            <option value="log">log</option>
+            <option value="exp">exp</option>
+            <option value="floor">floor</option>
+            <option value="ceil">ceil</option>
+            <option value="rand">rand</option>
+            <option value="gcd">gcd</option>
+            <option value="lcm">lcm</option>
+            <option value="fact">fact</option>
+            <option value="fib">fib</option>
+            <option value="cube">cube</option>
+            <option value="square">square</option>
+            <option value="pow10">pow10</option>
+            <option value="is_even">is_even</option>
+            <option value="is_odd">is_odd</option>
+            <option value="is_prime">is_prime</option>
+            <option value="is_perfect">is_perfect</option>
+            <option value="sqrt2">sqrt2</option>
+            <option value="cbrt">cbrt</option>
+            <option value="log_base">log_base</option>
+            <option value="factorize">factorize</option>
+            <option value="floor_div">floor_div</option>
+            <option value="sin_deg">sin_deg</option>
+            <option value="cos_deg">cos_deg</option>
+            <option value="tan_deg">tan_deg</option>
+            <option value="log10">log10</option>
+            <option value="square_diff">square_diff</option>
+            <option value="triangle_area">triangle_area</option>
+            <option value="rectangle_area">rectangle_area</option>
+            <option value="circle_area">circle_area</option>
+            <option value="perimeter_rect">perimeter_rect</option>
+            <option value="perimeter_circle">perimeter_circle</option>
+        </select>
+        <span id="b-container">
+            <input type="number" id="b" placeholder="Second number">
+        </span>
+        <button onclick="calculate()">Calculate</button>
+        <div id="calcResult" class="result"></div>
+        <a href="https://github.com/ELHart05" target="_blank" class="crts">By ELGladiator!</p>
+    </div>
+
+    <script>
+        const UNARY_OPS = new Set([
+            'inc', 'dec', 'abs', 'sqrt', 'sin', 'cos', 'tan',
+            'log', 'exp', 'floor', 'ceil', 'rand', 'fact', 'fib',
+            'cube', 'square', 'pow10', 'is_even', 'is_odd',
+            'is_prime', 'is_perfect', 'sqrt2', 'cbrt',
+            'sin_deg', 'cos_deg', 'tan_deg', 'log10'
+        ]);
+
+        function updateInputs() {
+            const op = document.getElementById("op").value;
+            const bContainer = document.getElementById("b-container");
+            if (UNARY_OPS.has(op)) {
+                bContainer.style.display = "none";
+            } else {
+                bContainer.style.display = "inline-block";
+            }
+        }
+
+        async function calculate() {
+            const a = document.getElementById("a").value;
+            const b = document.getElementById("b").value;
+            const op = document.getElementById("op").value;
+
+            const payload = { a, op };
+            if (!UNARY_OPS.has(op)) {
+                payload.b = b;
+            }
+
+            const res = await fetch("/calculate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                document.getElementById("calcResult").innerText = `Result: ${data.result}`;
+            } else {
+                document.getElementById("calcResult").innerText = `Error: ${data.error}`;
+            }
+        }
+
+        // Initialize input visibility on load
+        window.onload = updateInputs;
+    </script>
+</body>
+</html>

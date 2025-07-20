@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./challenge
+      dockerfile: Dockerfile
+    environment:
+      PORT: "3000"
+      SECRET_KEY: "36d8b93ed19893592a0339fcd47d48d4dba9ff443eed174ab5f7805f729b2a29"
+    ports:
+      - '3000:3000'
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure

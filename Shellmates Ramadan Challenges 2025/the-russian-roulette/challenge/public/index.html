@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Russian Roulette Login</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h3>
+                <span class="white">Russian</span> 
+                <span class="blue">Roulette</span> 
+                <span class="red">Login</span>
+            </h3>
+            <p class="subtitle">"Pull the Trigger"...</p>
+            <form method="POST" action="/api/login">
+                <fieldset>
+                    <p>
+                        <label for="user">Username</label>
+                        <input id="user" name="user" type="text" required />
+                    </p>
+                    <p>
+                        <label for="pass">Password</label>
+                        <input id="pass" name="pass" type="password" required />
+                    </p>
+                    <p>
+                        <input type="submit" id="submitBtn" value="Submit" />
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="flag"></div>
+    <script>
+        const params = new URLSearchParams(location.search);
+
+        if (params.has("message")) {
+            alert(params.get("message"));
+            history.pushState(null, null, "/");
+        }
+
+        if (params.has("flag")) {
+            document.querySelector(".container").style.display = "none";
+            document.querySelector("#flag").innerText = params.get("flag");
+        }
+
+        const buttonTexts = [
+            "Pull the Trigger", 
+            "Take a Shot", 
+            "Risk It All", 
+            "Spin the Cylinder", 
+            "One in Hundred Thousand",
+        ];
+
+        const subtitle = document.querySelector(".subtitle");
+
+        let currentIndex = 1;
+        setInterval(() => {
+            subtitle.textContent = `"${buttonTexts[currentIndex]}"...`;
+            currentIndex = (currentIndex + 1) % buttonTexts.length;
+        }, 1200);
+    </script>
+</body>
+</html>

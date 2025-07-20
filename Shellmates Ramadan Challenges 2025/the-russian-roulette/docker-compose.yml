@@ -1,0 +1,11 @@
+services:
+  the-russian-roulette:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '2345:3000'
+    environment:
+      - PORT=3000
+      - FLAG=shellmates{yOu_4rE_tHE_RUS$$IaN_r0Ul3Tte_M4sTEr}
+    restart: always

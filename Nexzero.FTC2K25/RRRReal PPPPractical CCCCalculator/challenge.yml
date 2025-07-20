@@ -1,0 +1,21 @@
+name: "RRRReal-PPPPractical-CCCCalculator"
+author: "ELGladiator"
+author_link: "https://github.com/ELHart05"
+category: web
+
+difficulty: hard 
+
+description: |
+  > Distributed systems is nutshell, I wanted to discover this world, I created this app by following one of my teachers who gaved us "La démarche complete" as he likes to say, I've tried to make some twists in it, give it a try, it's a Calculator anyways, a great calculator, THE CALCULATOR! "CAVA?"
+flags:
+  - nexus{444444444444444hhhhhh_rpc_53rv3r_3xp053d}
+
+tags:
+  - web
+state: hidden
+type: dynamic
+value: 500
+deployment:
+  isolate: false
+  conn_type: http
+  containerPort: 8080

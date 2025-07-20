@@ -1,0 +1,8 @@
+services:
+  wanna-login:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1300:1337"
+    restart: always

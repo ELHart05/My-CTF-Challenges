@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1d1f21;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('../images/deer-table.png') center/cover no-repeat;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+    width: 100%;
+    background-color: #2b2e30;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    color: #ff4c4c;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+
+.white {
+    color: #ffffff; /* White */
+}
+
+.blue {
+    color: #0033a0; /* Blue */
+}
+
+.red {
+    color: #d52b1e; /* Red */
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #c7c7c7;
+    margin-bottom: 1em;
+    font-style: italic;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+}
+
+p {
+    margin-bottom: 1.2em;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+    color: #c7c7c7;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #333;
+    color: #f4f4f4;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.8em;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background: #ff4c4c;
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff1c1c;
+}
+
+#flag {
+    text-align: center;
+    font-size: 2em;
+    color: #f4f4f4;
+    font-size: 600;
+}

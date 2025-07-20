@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Gladios';
+    src: url('../fonts/gladios.otf') format('opentype');
+}
+
+body {
+    text-align: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Gladios';
+}
+
+h1 {
+    color: white;
+    font-size: 96px;
+    margin-bottom: 0;
+}
+
+.container {
+    background-image: url('../images/gladios.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+textarea {
+    font-family: 'Gladios';
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    padding-right: 0;
+    height: 600px;
+    opacity: 0.8;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 3rem;
+}
+
+/* shellmates{W3Ll_Y0u_BeTtER_trY_harDeR} */

@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  rpc-server:
+    build:
+      context: ./challenge
+      dockerfile: server/Dockerfile
+    container_name: rpc-server
+    working_dir: /challenge
+    ports:
+      - "8888:8888"
+    networks:
+      - rpcnet
+
+  rpc-client:
+    build:
+      context: ./challenge
+      dockerfile: client/Dockerfile
+    container_name: rpc-client
+    working_dir: /challenge
+    ports:
+      - "4444:4444"
+    depends_on:
+      - rpc-server
+    env_file:
+      - ./challenge/.env
+    networks:
+      - rpcnet
+
+  nfs-server:
+    image: itsthenetwork/nfs-server-alpine
+    container_name: nfs-server
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - SHARED_DIRECTORY=/exports/shared
+      - READ_ONLY=true
+      - SYNC=true
+      - NFS_VERSION=4
+    volumes:
+      - ./challenge/shared:/exports/shared
+    ports:
+      - "2049:2049"
+
+volumes:
+  nfs:
+    driver: local
+
+networks:
+  rpcnet:
+    driver: bridge

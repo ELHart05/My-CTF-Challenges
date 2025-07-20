@@ -1,0 +1,16 @@
+users_db = {
+    'guest': 'guest',
+    'admin': os.environ.get('PASSWORD', 'TEST_PWD')
+}
+
+def valid_user(user):
+    return users_db.get(user['username']) == user['password']
+
+if not session or 'user_data' not in session:
+    return render_template("login.html", message="Login Please :D")
+user = json.loads(session['user_data'])
+if valid_user(user):
+    if user['flag'] == True and user['username'] != 'guest':
+        return FLAG
+    else:
+        return render_template("welcome.html", username=user['username'])

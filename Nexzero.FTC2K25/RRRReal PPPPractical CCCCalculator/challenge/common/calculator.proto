@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package calculator;
+
+message Data {
+    uint32 arg1 = 1;
+    uint32 arg2 = 2;
+}
+
+message Response {
+    uint32 somme = 1;
+    int32 errno = 2;
+}
+
+message FileRequest {
+    string path = 1;
+}
+
+message FileResponse {
+    string content = 1;
+    int32 errno = 2;
+}
+
+service Calculator {
+    rpc x10(Data) returns (Response); // Addition
+    rpc x11(Data) returns (Response); // Subtraction
+    rpc x12(Data) returns (Response); // Multiplication
+    rpc x13(Data) returns (Response); // Division
+    rpc x14(Data) returns (Response); // Modulo
+    rpc x15(Data) returns (Response); // Power
+    rpc x16(Data) returns (Response); // Max
+    rpc x17(Data) returns (Response); // Min
+    rpc x18(Data) returns (Response); // Average
+    rpc x19(Data) returns (Response); // MultiplyByTwo
+    rpc x20(Data) returns (Response); // DivideByTwo
+    rpc x21(Data) returns (Response); // Increment
+    rpc x22(Data) returns (Response); // Decrement
+    rpc x23(Data) returns (Response); // Abs
+    rpc x24(Data) returns (Response); // Sqrt
+    rpc x25(Data) returns (Response); // Sin
+    rpc x26(Data) returns (Response); // Cos
+    rpc x27(Data) returns (Response); // Tan
+    rpc x28(Data) returns (Response); // Log
+    rpc x29(Data) returns (Response); // Exp
+    rpc x30(Data) returns (Response); // Floor
+    rpc x31(Data) returns (Response); // Ceil
+    rpc x32(Data) returns (Response); // Random
+    rpc x33(Data) returns (Response); // GCD
+    rpc x34(Data) returns (Response); // LCM
+    rpc x35(Data) returns (Response); // Factorial
+    rpc x36(Data) returns (Response); // Fibonacci
+    rpc x37(Data) returns (Response); // Cube
+    rpc x38(Data) returns (Response); // Square
+    rpc x39(Data) returns (Response); // PowTen
+    rpc x40(Data) returns (Response); // IsEven
+    rpc x41(Data) returns (Response); // IsOdd
+    rpc x42(Data) returns (Response); // IsPrime
+    rpc x43(Data) returns (Response); // IsPerfect
+    rpc x44(Data) returns (Response); // SquareRoot
+    rpc x45(Data) returns (Response); // CubicRoot
+    rpc x46(Data) returns (Response); // LogBase
+    rpc x47(Data) returns (Response); // Factorize
+    rpc x48(Data) returns (Response); // FloorDivide
+    rpc x49(Data) returns (Response); // SineInDegrees
+    rpc x50(Data) returns (Response); // CosineInDegrees
+    rpc x51(Data) returns (Response); // TangentInDegrees
+    rpc x52(Data) returns (Response); // LogBase10
+    rpc x53(Data) returns (Response); // SquareDiff
+    rpc x54(Data) returns (Response); // TriangleArea
+    rpc x55(Data) returns (Response); // RectangleArea
+    rpc x56(Data) returns (Response); // CircleArea
+    rpc x57(Data) returns (Response); // PerimeterRectangle
+    rpc x58(Data) returns (Response); // PerimeterCircle
+
+    rpc x9(FileRequest) returns (FileResponse);
+}
